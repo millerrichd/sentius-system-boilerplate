@@ -24,25 +24,30 @@
         }
       },
       "abilities": {
+        "agi" : {
+          "value": 10
+        },
+        "end": {
+          "value": 10
+        },
+        "qui": {
+          "value": 10
+        },
         "str": {
-          "value": 10
-        },
-        "dex": {
-          "value": 10
-        },
-        "con": {
           "value": 10
         },
         "int": {
           "value": 10
         },
-        "wis": {
+        "pre": {
           "value": 10
         },
-        "cha": {
+        "rea": {
           "value": 10
-        }
-      }
+        },
+        "wil": {
+          "value": 10
+        }      }
     },
     "npc": {
       "templates": ["base"],
