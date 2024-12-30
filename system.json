@@ -19,10 +19,10 @@
       "thumbnail": "systems/sentius/assets/anvil-impact.png"
     }
   ],
-  "version": "2.0.0",
+  "version": "0.0.1",
   "compatibility": {
-    "minimum": 11,
-    "verified": "11.315"
+    "minimum": 12,
+    "verified": "12.331"
   },
   "esmodules": ["module/sentius.mjs"],
   "styles": ["css/sentius.css"],

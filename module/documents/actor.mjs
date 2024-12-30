@@ -46,12 +46,37 @@ export class SentiusActor extends Actor {
 
     // Make modifications to data here. For example:
     const systemData = actorData.system;
+    console.log("actiorData.system ~~Derived Abilites~~", systemData);
 
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (let [key, ability] of Object.entries(systemData.abilities)) {
-      // Calculate the modifier using d20 rules.
-      ability.mod = Math.floor((ability.value - 10) / 2);
+    const paceDieValue = Math.floor((systemData.abilities.agi.bonus + systemData.abilities.qui.bonus )/ 2);
+    let paceDie = "d4";
+    if (paceDieValue < 1) {
+      paceDie = "d4";
+    } else if( paceDieValue === 1 || paceDieValue === 2) {
+      paceDie = "d6";
+    } else if( paceDieValue === 3 || paceDieValue === 4) {
+      paceDie = "d8";
+    } else if( paceDieValue === 5 || paceDieValue === 6) {
+      paceDie = "d10";
+    } else {
+      paceDie = "d12";
     }
+
+    /* derived abilities */
+    systemData.derivedAbilities = {
+      defense: { value: Math.floor((systemData.abilities.agi.bonus + systemData.abilities.int.bonus )/ 2) },
+      faith: { value: Math.floor((systemData.abilities.wil.bonus + systemData.abilities.int.bonus )/ 2) },
+      fatigue: { value: Math.floor((systemData.abilities.end.bonus + systemData.abilities.wil.bonus )/ 2) },
+      health: { value: Math.floor((systemData.abilities.end.bonus + systemData.abilities.wil.bonus )/ 2) },
+      initiative: { value: Math.floor((systemData.abilities.int.bonus + systemData.abilities.qui.bonus )/ 2) },
+      mana: { value: Math.floor((systemData.abilities.wil.bonus + systemData.abilities.rea.bonus )/ 2) },
+      psychic: { value: Math.floor((systemData.abilities.wil.bonus + systemData.abilities.pre.bonus )/ 2) },
+      pace: { value: Math.floor((systemData.abilities.agi.bonus + systemData.abilities.qui.bonus )/ 2) + 2 },
+      paceDie: { value: paceDie },
+      stability: { value: Math.floor((systemData.abilities.end.bonus + systemData.abilities.wil.bonus )/ 2) }
+    }
+
+    console.log("actiorData.system ~~Derived Abilites~~", systemData);
   }
 
   /**

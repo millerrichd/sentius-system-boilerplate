@@ -25,29 +25,38 @@
       },
       "abilities": {
         "agi" : {
-          "value": 10
+          "die": "d10",
+          "bonus": 2
         },
         "end": {
-          "value": 10
+          "die": "d10",
+          "bonus": 2
         },
         "qui": {
-          "value": 10
+          "die": "d10",
+          "bonus": 2
         },
         "str": {
-          "value": 10
+          "die": "d10",
+          "bonus": 2
         },
         "int": {
-          "value": 10
+          "die": "d10",
+          "bonus": 2
         },
         "pre": {
-          "value": 10
+          "die": "d10",
+          "bonus": 2
         },
         "rea": {
-          "value": 10
+          "die": "d10",
+          "bonus": 2
         },
         "wil": {
-          "value": 10
-        }      }
+          "die": "d10",
+          "bonus": 2
+        }
+      }
     },
     "npc": {
       "templates": ["base"],

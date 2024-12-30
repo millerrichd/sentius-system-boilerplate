@@ -57,7 +57,7 @@
 
     {{!-- Owned Features Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
-      <section class="grid grid-3col">
+      <section class="grid grid-2col">
         <aside class="sidebar">
 
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
@@ -66,9 +66,17 @@
           <div class="abilities flexcol">
             {{#each system.abilities as |ability key|}}
             <div class="ability flexrow flex-group-center">
-              <label for="system.abilities.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
-              <input type="text" name="system.abilities.{{key}}.value" value="{{ability.value}}" data-dtype="Number"/>
-              <span class="ability-mod rollable" data-roll="d20+@abilities.{{key}}.mod" data-label="{{localize (lookup @root.config.abilities key)}}">{{numberFormat ability.mod decimals=0 sign=true}}</span>
+              <label for="system.abilities.{{key}}.die" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.abilities key)}}">{{localize (lookup @root.config.abilities key)}}</label>
+              <button class="increase-ability" data-ability="{{key}}">+</button>
+              <label for="system.abilities.{{key}}.die" class="resource-label flexsmall align-center" data-label="Die">{{ability.die}}</label>
+              <label for="system.abilities.{{key}}.bonus" class="resource-label flexsmall align-center" data-label="Bonus">{{ability.bonus}}</label>
+              <button class="decrease-ability" data-ability="{{key}}">-</button>
+            </div>
+            {{/each}}
+            {{#each system.derivedAbilities as |ability key|}}
+            <div class="ability flexrow flex-group-center">
+              <label for="system.derivedAbilities.{{key}}.value" class="resource-label flexlarge align-left" data-label="{{localize (lookup @root.config.derivedAbilities key)}}">{{localize (lookup @root.config.derivedAbilities key)}}</label>
+              <label for="system.derivedAbilities.{{key}}.value" class="resource-label flexsmall align-left" data-label="Value">{{ability.value}}</label>
             </div>
             {{/each}}
           </div>

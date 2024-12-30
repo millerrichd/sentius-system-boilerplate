@@ -1,12 +1,26 @@
 {
   "SENTIUS": {
     "Ability": {
+      "Agi": { "long": "Agility", "abbr": "agi" },
+      "End": { "long": "Endurance", "abbr": "end" },
+      "Qui": { "long": "Quickness", "abbr": "qui" },
       "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "Int": { "long": "Intuition", "abbr": "int" },
+      "Pre": { "long": "Presence", "abbr": "pre" },
+      "Rea": { "long": "Reasoning", "abbr": "rea" },
+      "Wil": { "long": "Will", "abbr": "wil" }
+    },
+    "DerivedAbility": {
+      "Defense": { "long": "Defense", "abbr": "def" },
+      "Faith": { "long": "Faith", "abbr": "fth" },
+      "Fatigue": { "long": "Fatigue Maximum", "abbr": "fat" },
+      "Health": { "long": "Health", "abbr": "hea" },
+      "Initiative": { "long": "Initiative Speed", "abbr": "ini" },
+      "Mana": { "long": "Mana", "abbr": "man" },
+      "Psychic": { "long": "Psychic", "abbr": "psy" },
+      "Pace": { "long": "Pace", "abbr": "pac" },
+      "PaceDie": { "long": "Pace Die", "abbr": "pacd" },
+      "Stability": { "long": "Stability", "abbr": "sta" }      
     },
     "SheetLabels": {
       "Actor": "Sentius Actor Sheet",

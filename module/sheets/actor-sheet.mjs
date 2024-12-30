@@ -193,6 +193,11 @@ export class SentiusActorSheet extends ActorSheet {
         li.addEventListener('dragstart', handler, false);
       });
     }
+
+    // Ability score increase.
+    html.on('click', '.increase-ability', this._onIncreaseAbility.bind(this));
+    html.on('click', '.decrease-ability', this._onDecreaseAbility.bind(this));
+
   }
 
   /**
@@ -252,5 +257,75 @@ export class SentiusActorSheet extends ActorSheet {
       });
       return roll;
     }
+  }
+
+  //this._onIncreaseAbility.bind(this)
+  async _onIncreaseAbility(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const ability = element.dataset.ability;
+    const actorData = this.actor.system;
+    const currentDie = actorData.abilities[ability].die;
+    const currentBonus = actorData.abilities[ability].bonus;
+    let newDie = '';
+    let newBonus = 0;
+    if(currentDie === 'd12') { 
+      newDie = 'd10';
+      newBonus = 2;
+    } else if(currentDie === 'd10') {
+      newDie = 'd8';
+      newBonus = 4;
+    } else if(currentDie === 'd8') {
+      newDie = 'd6';
+      newBonus = 6;
+    } else if(currentDie === 'd6') {
+      newDie = 'd4';
+      newBonus = 8;
+    } else if(currentDie === 'd4') {
+      newDie = 'd2';
+      newBonus = 10;
+    } else {
+      newDie = currentDie;
+      newBonus = currentBonus;
+    }
+    await this.actor.update({
+      [`system.abilities.${ability}.die`]: newDie,
+      [`system.abilities.${ability}.bonus`]: newBonus,
+    });
+  }
+
+  //this._onDecreaseAbility.bind(this)
+  async _onDecreaseAbility(event) {
+    event.preventDefault();
+    const element = event.currentTarget;
+    const ability = element.dataset.ability;
+    const actorData = this.actor.system;
+    const currentDie = actorData.abilities[ability].die;
+    const currentBonus = actorData.abilities[ability].bonus;
+    let newDie = '';
+    let newBonus = 0;
+    if(currentDie === 'd2') { 
+      newDie = 'd4';
+      newBonus = 8;
+    } else if(currentDie === 'd4') {
+      newDie = 'd6';
+      newBonus = 6;
+    } else if(currentDie === 'd6') {
+      newDie = 'd8';
+      newBonus = 4;
+    } else if(currentDie === 'd8') {
+      newDie = 'd10';
+      newBonus = 2;
+    } else if(currentDie === 'd10') {
+      newDie = 'd12';
+      newBonus = 0;
+    } else {
+      newDie = currentDie;
+      newBonus = currentBonus;
+    }
+    await this.actor.update({
+      [`system.abilities.${ability}.die`]: newDie,
+      [`system.abilities.${ability}.bonus`]: newBonus,
+    });
   }
 }
